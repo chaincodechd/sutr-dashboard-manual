@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Certificate Authorities - SutR Dashboard Manual</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Certificate Authorities";
+        var mkdocs_page_input_path = "certificate-authorities.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> SutR Dashboard Manual
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Login</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ordering-service/">Ordering Service</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Certificate Authorities</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#org-tesla">Org-Tesla</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#create-ca">Create CA</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#org-netflix">Org-Netflix</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#create-ca_1">Create CA</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../organizations%28msp%29/">Organizations (MSP)</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../peers/">Peers</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../channels/">Channels</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">SutR Dashboard Manual</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Certificate Authorities</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="certificate-authorities">Certificate Authorities</h1>
+<h2 id="org-tesla">Org-Tesla</h2>
+<h3 id="create-ca">Create CA</h3>
+<p>Let’s begin with creating certificate authority to initiate the creation of peer org. Click on Add Certificate Authority. </p>
+<p><img alt="create-ca" src="../assets/create-ca.png" /></p>
+<p>It will show a prompt asking for two options, whether to create a new CA (or) To import CA. Select to create new CA and click on Next. </p>
+<p><img alt="create-ca-promt" src="../assets/create-ca-promt.png" /></p>
+<p>For creating new CA, you will need to fill the following inputs.  </p>
+<p>1) Display Name – Peer Org CA display name. </br>
+2) Domain – Domain to be used with peer endpoints. </br>
+3) Organization Name – Name of Peer Org. </br>
+4) CA Name – Name of Peer Org CA. </br>
+5) Admin Identity Name – Name of Org Admin Identity. </br>
+6) Admin Identity Password – Password of Org Admin Identity. </br></p>
+<p>Fill in and click on Next. </p>
+<p><img alt="create-ca-details" src="../assets/create-ca-details.png" /></p>
+<p>It will then verify if CA subdomain is pointed to IP or not. Click on Confirm. </p>
+<p><img alt="verify-ca-subdomain" src="../assets/verify-ca-subdomain.png" /></p>
+<p><img alt="confirm-ca-creation" src="../assets/confirm-ca-creation.png" /></p>
+<p>Once the CA creation is done, you will receive the success prompt like below. </p>
+<p><img alt="ca-success-prompt" src="../assets/ca-success-prompt.png" /></p>
+<p>Under the Register Identity tab in CA module, you will see the list of identities registered to the CA which includes a peer, org user and org admin. </p>
+<p><img alt="registered-identities" src="../assets/register-identity.png" /></p>
+<h2 id="org-netflix">Org-Netflix</h2>
+<h3 id="create-ca_1">Create CA</h3>
+<p>Follow all steps from creating CA till adding peer to create the second peer org. </p>
+<p><img alt="create-ca" src="../assets/create-ca-2.png" /></p>
+<p><img alt="ca-details" src="../assets/org-netflix-ca-details.png" /></p>
+<p><img alt="verify-netflix-subdomain" src="../assets/verify-netflix-domain.png" /></p>
+<p><img alt="netflix-ca-created-prompt" src="../assets/netflix-ca-created-prompt.png" /></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../ordering-service/" class="btn btn-neutral float-left" title="Ordering Service"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../organizations%28msp%29/" class="btn btn-neutral float-right" title="Organizations (MSP)">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../ordering-service/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../organizations%28msp%29/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

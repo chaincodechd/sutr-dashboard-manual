@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Peers - SutR Dashboard Manual</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Peers";
+        var mkdocs_page_input_path = "peers.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> SutR Dashboard Manual
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Login</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ordering-service/">Ordering Service</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../certificate-authorities/">Certificate Authorities</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../organizations%28msp%29/">Organizations (MSP)</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Peers</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#org-tesla">Org-Tesla</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#add-peers">Add Peers</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#org-netflix">Org-Netflix</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../channels/">Channels</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">SutR Dashboard Manual</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Peers</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="peers">Peers</h1>
+<h2 id="org-tesla">Org-Tesla</h2>
+<h3 id="add-peers">Add Peers</h3>
+<p>Next, go to Peers module and click on “Add peer”.</p>
+<p><img alt="add-peer" src="../assets/add-peer.png" /></p>
+<p>For adding new peer, you will need to fill in the following inputs.  </p>
+<p>1) Organization – Select peer org name from the dropdown. </br>
+2) Organization Domain – Domain to be used with peer endpoints. </br>
+3) Display Name – Peer ID. </br>
+4) Choose Registered Identity – Select registered peer id from dropdown. </br></p>
+<p>Fill in and click on Next. </p>
+<p><img alt="add-peer-details" src="../assets/add-peer-details.png" /></p>
+<p>Next page will verify the subdomains, then click on Confirm. </p>
+<p><img alt="verify-peer-subdomains" src="../assets/verify-per-subdomains.png" /></p>
+<p><img alt="confirm-peer-subdomains" src="../assets/confirm-peer-subdomain.png" /></p>
+<p>Once the peer is created successfully, you will see a prompt saying it. </p>
+<p><img alt="created-peer" src="../assets/created-peer.png" /></p>
+<h2 id="org-netflix">Org-Netflix</h2>
+<p>Follow all steps from creating CA till adding peer to create the second peer org. </p>
+<p><img alt="add-peer-netflix" src="../assets/add-peer-netflix.png" /></p>
+<p>Next page will verify the subdomains, then click on Confirm, which will start deploying the peer.</p>
+<p><img alt="netflix-peer-subdomain" src="../assets/netflix-peer-subdomain.png" /></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../organizations%28msp%29/" class="btn btn-neutral float-left" title="Organizations (MSP)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../channels/" class="btn btn-neutral float-right" title="Channels">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../organizations%28msp%29/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../channels/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
