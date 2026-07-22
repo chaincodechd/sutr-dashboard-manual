@@ -71,6 +71,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#before-you-begin">Before you begin</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#enabling-anchoring-from-the-dashboard">Enabling anchoring from the dashboard</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#step-1-deploy-the-mstanchor-contract">Step 1 — Deploy the MSTAnchor contract</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#step-2-configure-the-peer">Step 2 — Configure the peer</a>
@@ -173,6 +175,30 @@
 </blockquote>
 <p><img alt="Five setup steps: deploy the contract and authorize the relayer, configure the peers, update the channel configuration, run preflight, then confirm anchoring" src="../assets/mst-setup-steps.svg" /></p>
 <hr/>
+<h2 id="enabling-anchoring-from-the-dashboard">Enabling anchoring from the dashboard</h2>
+<p>The quickest way to switch anchoring on is at channel-creation time. In the <strong>Channels</strong> module, click <strong>Create Channel</strong> (as described in <a href="../channels/">Channels</a>), fill in the ordering service, channel name and creator organization as usual, and expand <strong>Advanced Configurations</strong>. Below the block-cutting parameters you will find an <strong>Enable MST Anchoring</strong> checkbox. Leave it unticked and the channel behaves as a completely standard Fabric channel; tick it if this channel should anchor its transactions to the MST chain.</p>
+<p><img alt="Create Channel dialog with the Enable MST Anchoring checkbox under Advanced Configurations" src="../assets/enable-mst-anchoring.png" /></p>
+<p>Ticking the checkbox expands the MST anchoring configuration form:</p>
+<p><img alt="MST anchoring configuration form with RPC endpoint, chain id, capture mode, batch strategy, confirmations, flush cadence and chaincode filtering" src="../assets/mst-anchoring-config.png" /></p>
+<p>Each field in one line:</p>
+<table class="docutils">
+<thead>
+<tr><th>Field</th><th>What it does</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Enable MST Anchoring</strong></td><td>The master switch — unticked means no anchoring and no MST configuration on the channel.</td></tr>
+<tr><td><strong>RPC Endpoint</strong> (required)</td><td>The JSON-RPC URL of the MST/EVM node that anchor transactions are submitted to.</td></tr>
+<tr><td><strong>Chain ID</strong> (required)</td><td>The chain id the endpoint must report (for example <code>1337</code>) — pins the channel to that one chain.</td></tr>
+<tr><td><strong>Capture Mode</strong></td><td>What gets anchored: <code>opt-in</code> (default) scopes anchoring to selected chaincodes, <code>all</code> anchors every transaction on the channel.</td></tr>
+<tr><td><strong>Batch Strategy</strong></td><td><code>individual</code> (default) records one anchor per transaction (roughly 40% gas savings); <code>merkle</code> records one root per batch (roughly 95% savings) — the economical choice at volume.</td></tr>
+<tr><td><strong>Confirmations</strong></td><td>How many blocks to wait before an anchor is marked <code>CONFIRMED</code> — the guard against chain reorganisations.</td></tr>
+<tr><td><strong>Cadence Mode</strong></td><td>When anchors are flushed to the MST chain: <code>per-tx</code> (default) immediately, <code>batch</code> after every N transactions, <code>interval</code> on a fixed timer, <code>cron</code> on a schedule — a latency-versus-gas trade-off.</td></tr>
+<tr><td><strong>Include Chaincodes</strong> (optional)</td><td>In <code>opt-in</code> mode, anchor only transactions from these chaincodes.</td></tr>
+<tr><td><strong>Exclude Chaincodes</strong> (optional)</td><td>Never anchor transactions from these chaincodes.</td></tr>
+</tbody>
+</table>
+<p>Click <strong>Create</strong> and the dashboard applies these anchoring settings as part of the new channel's configuration — the dashboard equivalent of the channel-side settings in <a href="#step-3-enable-anchoring-on-the-channel">Step 3</a>. The peer-side preparation still applies (see <a href="#before-you-begin">Before you begin</a> and Step 2), so run the preflight check from Step 4 afterwards to confirm every requirement — MST binary, NodeOUs, contract, <code>Writers</code> policy — is satisfied.</p>
+<hr/>
 <h2 id="step-1-deploy-the-mstanchor-contract">Step 1 — Deploy the MSTAnchor contract and authorize the relayer</h2>
 <p>Deploy one MSTAnchor contract for the channel on your MST chain (a transparent upgradeable proxy is recommended so the address stays stable). Then add each anchoring peer's relayer wallet to the contract's allowlist:</p>
 <pre><code class="language-bash"># from the peer CLI, using an owner key on the contract
@@ -212,6 +238,9 @@ peer mst relayer add 0xRelayerWalletAddress -C mychannel
 <hr/>
 <h2 id="step-3-enable-anchoring-on-the-channel">Step 3 — Enable anchoring on the channel</h2>
 <p>Anchoring is a <strong>channel-level, all-org-agreed</strong> setting. Two things go into the channel configuration together:</p>
+<blockquote>
+<p><strong>Note:</strong> If you ticked <strong>Enable MST Anchoring</strong> when creating the channel in the dashboard (see <a href="#enabling-anchoring-from-the-dashboard">above</a>), these channel settings were applied for you at creation time — this step documents what they mean and how to set them by hand. Either way, finish with the preflight check in Step 4.</p>
+</blockquote>
 <h3 id="enable-the-v2_5_mstanchor-capability">3a. Enable the <code>V2_5_MSTANCHOR</code> capability</h3>
 <p>Under <code>Application</code> capabilities, add:</p>
 <pre><code class="language-yaml">Capabilities:
