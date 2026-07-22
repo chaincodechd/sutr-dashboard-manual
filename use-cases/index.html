@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Blockchain Use Cases - SutR Dashboard Manual</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Blockchain Use Cases";
+        var mkdocs_page_input_path = "use-cases.md";
+        var mkdocs_page_url = null;
+      </script>
+
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> SutR Dashboard Manual
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Login</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ordering-service/">Ordering Service</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../certificate-authorities/">Certificate Authorities</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../organizations%28msp%29/">Organizations (MSP)</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../peers/">Peers</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../channels/">Channels</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Blockchain Use Cases</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#supply-chain-traceability">1. Supply Chain Traceability</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#trade-finance">2. Trade Finance</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#healthcare-pharmaceuticals">3. Healthcare &amp; Pharmaceuticals</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#digital-identity-kyc">4. Digital Identity &amp; KYC</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tokenization-of-real-world-assets">5. Tokenization of Real-World Assets</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#where-sutr-fits-in">Where SutR Fits In</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">SutR Dashboard Manual</a>
+
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>Blockchain Use Cases</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+
+                <h1 id="blockchain-use-cases">Blockchain Use Cases</h1>
+<p>The rest of this manual shows you <em>how</em> to build a Hyperledger Fabric network with the SutR Dashboard. This page answers a different question: <strong>what do businesses actually use these networks for?</strong></p>
+<p>Think of an enterprise blockchain as a <strong>shared record book</strong>. Several organizations write into the same book, every member keeps an identical copy, and once something is written nobody can quietly change or erase it. No single company owns the book, yet everyone can trust what it says. That one idea powers everything below.</p>
+<p><img alt="Four reasons enterprises use blockchain: one shared record, tamper-evident history, members-only access, automated rules" src="../assets/usecase-overview.svg" /></p>
+<p>Here are five of the most prominent ways enterprises put this to work today — in plain language, no technical background needed.</p>
+<h2 id="supply-chain-traceability">1. Supply Chain Traceability</h2>
+<p><strong>The problem today:</strong> a product passes through many hands on its way to you — growers, factories, shippers, warehouses, stores. Each company keeps its own separate records, so when something goes wrong (say, a batch of food is found to be contaminated), working out where it came from and where the rest of the batch went takes days of phone calls and paperwork.</p>
+<p><strong>How blockchain helps:</strong> every handoff is recorded on the shared ledger the moment it happens. Anyone with permission can follow a product's entire journey in seconds — which farm, which factory, which truck, which store. Recalls become fast and precise: instead of clearing whole shelves "just in case", only the affected batch is pulled.</p>
+<p><img alt="Supply chain flow from producer to consumer with every handoff recorded on a shared ledger; recalls traced in seconds instead of days" src="../assets/usecase-supply-chain.svg" /></p>
+<p><em>Seen in the real world:</em> global food retailers trace fresh produce from farm to shelf in seconds; luxury brands let buyers verify a watch or diamond is genuine; manufacturers track parts across hundreds of suppliers.</p>
+<h2 id="trade-finance">2. Trade Finance</h2>
+<p><strong>The problem today:</strong> when goods are sold across borders, the buyer, the seller and both of their banks pass paper documents around — invoices, shipping papers, letters of credit (a bank's promise that the seller will be paid). A single deal can spend a week or more in couriered paperwork, and fraud such as the same invoice being financed by two different banks is hard to spot.</p>
+<p><strong>How blockchain helps:</strong> all four parties work from one shared record of the deal. When the goods are shipped or inspected, the status updates for everyone at the same moment, and the payment step can be triggered automatically once the agreed conditions are met. Deals that took about ten days of paperwork can complete in about a day — and a document registered once cannot be quietly reused.</p>
+<p><img alt="Trade finance: exporter, importer and both banks share one deal record instead of couriering paper documents" src="../assets/usecase-trade-finance.svg" /></p>
+<p><em>Seen in the real world:</em> major international banks have issued blockchain-based letters of credit in under 24 hours — a process that traditionally took five to ten days.</p>
+<h2 id="healthcare-pharmaceuticals">3. Healthcare &amp; Pharmaceuticals</h2>
+<p><strong>The problem today:</strong> counterfeit medicine is a deadly worldwide problem, and a pack of medicine changes hands many times between the factory and the pharmacy shelf. Separately, your medical records sit locked in silos at different hospitals and labs that have no safe, standard way to share them.</p>
+<p><strong>How blockchain helps:</strong> each pack of medicine gets a digital identity when it is made, and every handoff after that is recorded. A pharmacist — or a patient with a phone — can scan the pack and see its complete, trustworthy history. A counterfeit pack has no recorded history, so it stands out immediately. The same "share carefully, with consent" model lets hospitals exchange patient records while the patient stays in control of who sees what.</p>
+<p><img alt="Medicine pack tracked from manufacturer to patient with verification at every step; a counterfeit pack with no recorded history is rejected" src="../assets/usecase-healthcare.svg" /></p>
+<p><em>Seen in the real world:</em> pharmaceutical companies and distributors use shared ledgers to verify medicines as regulations in several countries now demand end-to-end drug traceability.</p>
+<h2 id="digital-identity-kyc">4. Digital Identity &amp; KYC</h2>
+<p><strong>The problem today:</strong> every time you open a bank account, buy insurance or get a new SIM card, you prove your identity from scratch — the same documents, photocopied again, stored in yet another company's files. It is slow for customers, hugely expensive for companies (these "Know Your Customer" checks cost banks billions every year), and every stored copy is one more thing that can leak.</p>
+<p><strong>How blockchain helps:</strong> a trusted member of the network verifies your identity once and records a tamper-proof <em>confirmation</em> — not your documents, just the proof that you have been properly verified. Any other member you approve can rely on that proof instantly. You sign up in minutes instead of days, and you decide what is shared with whom.</p>
+<p><img alt="A customer completes identity checks once, receives a verified digital ID, and a bank, an insurer and a phone company all accept it instantly" src="../assets/usecase-digital-identity.svg" /></p>
+<p><em>Seen in the real world:</em> banking groups share completed KYC checks over permissioned networks, and several governments are piloting blockchain-backed digital identity for citizens.</p>
+<h2 id="tokenization-of-real-world-assets">5. Tokenization of Real-World Assets</h2>
+<p><strong>The problem today:</strong> valuable assets — office buildings, bonds, fine art — are hard to buy and sell. They trade rarely and only in enormous chunks (you cannot own a small slice of an office tower), and every transfer drags through weeks of intermediaries and paperwork.</p>
+<p><strong>How blockchain helps:</strong> the asset is represented on the ledger as thousands of digital <em>tokens</em>, each one a small share of ownership. Investors of any size can buy exactly as much as they want, a sale settles in minutes instead of weeks, and the ledger is the single, always-current record of who owns what — visible to every member, impossible to quietly rewrite.</p>
+<p><img alt="A large asset is divided into thousands of digital tokens that many investors can own in any amount, with trades settling in minutes" src="../assets/usecase-tokenization.svg" /></p>
+<p><em>Seen in the real world:</em> property platforms sell fractional shares of real estate, banks and even governments have issued digital bonds on distributed ledgers, and carbon credits are tracked and retired on shared registries so the same credit cannot be sold twice.</p>
+<h2 id="where-sutr-fits-in">Where SutR Fits In</h2>
+<p>Every use case on this page runs on a <strong>permissioned</strong> blockchain — a members-only network such as Hyperledger Fabric, where the participants are known companies rather than anonymous strangers. The pieces you create with the SutR Dashboard throughout this manual are exactly the building blocks of such networks:</p>
+<ul>
+<li>each company becomes an <strong>organization</strong> with its own identity (certificate authority),</li>
+<li>its <strong>peers</strong> hold that company's copy of the shared ledger,</li>
+<li>the <strong>ordering service</strong> keeps everyone's copy in the same order, and</li>
+<li><strong>channels</strong> let a group of members share records privately.</li>
+</ul>
+<p>In other words: this manual teaches you to build the foundation that all five of these use cases stand on.</p>
+
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../channels/" class="btn btn-neutral float-left" title="Channels"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+
+
+      <span><a href="../channels/" style="color: #fcfcfc">&laquo; Previous</a></span>
+
+
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

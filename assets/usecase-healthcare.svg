@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" font-family="Lato,'Helvetica Neue',Arial,sans-serif" role="img" aria-label="Medicine pack tracked from manufacturer to patient with verification at every step; a counterfeit pack with no recorded history is rejected">
+  <defs>
+    <marker id="arrow-hc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8a8a8a"/>
+    </marker>
+    <marker id="arrow-bad" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#d03b3b"/>
+    </marker>
+  </defs>
+  <text x="360" y="30" text-anchor="middle" font-size="14" fill="#6f6f6f" font-style="italic">Each medicine pack carries its full journey with it</text>
+
+  <!-- Chain nodes -->
+  <g>
+    <rect x="26" y="60" width="140" height="72" rx="10" fill="#eaf2f8" stroke="#2980b9" stroke-width="1.5"/>
+    <text x="96" y="92" text-anchor="middle" font-size="14.5" font-weight="700" fill="#2c3e50">Manufacturer</text>
+    <text x="96" y="112" text-anchor="middle" font-size="13" fill="#6f6f6f">makes the medicine</text>
+  </g>
+  <line x1="166" y1="96" x2="198" y2="96" stroke="#8a8a8a" stroke-width="2" marker-end="url(#arrow-hc)"/>
+  <g>
+    <rect x="202" y="60" width="140" height="72" rx="10" fill="#eaf2f8" stroke="#2980b9" stroke-width="1.5"/>
+    <text x="272" y="92" text-anchor="middle" font-size="14.5" font-weight="700" fill="#2c3e50">Wholesaler</text>
+    <text x="272" y="112" text-anchor="middle" font-size="13" fill="#6f6f6f">moves it in bulk</text>
+  </g>
+  <line x1="342" y1="96" x2="374" y2="96" stroke="#8a8a8a" stroke-width="2" marker-end="url(#arrow-hc)"/>
+  <g>
+    <rect x="378" y="60" width="140" height="72" rx="10" fill="#eaf2f8" stroke="#2980b9" stroke-width="1.5"/>
+    <text x="448" y="92" text-anchor="middle" font-size="14.5" font-weight="700" fill="#2c3e50">Pharmacy</text>
+    <text x="448" y="112" text-anchor="middle" font-size="13" fill="#6f6f6f">sells the pack</text>
+  </g>
+  <line x1="518" y1="96" x2="550" y2="96" stroke="#8a8a8a" stroke-width="2" marker-end="url(#arrow-hc)"/>
+  <g>
+    <rect x="554" y="60" width="140" height="72" rx="10" fill="#eaf2f8" stroke="#2980b9" stroke-width="1.5"/>
+    <text x="624" y="92" text-anchor="middle" font-size="14.5" font-weight="700" fill="#2c3e50">Patient</text>
+    <text x="624" y="112" text-anchor="middle" font-size="13" fill="#6f6f6f">scans to check it</text>
+  </g>
+
+  <!-- Verified chips -->
+  <g>
+    <g transform="translate(96,156)">
+      <circle cx="-34" cy="-5" r="9" fill="#0ca30c"/>
+      <path d="M -38 -5 l 3 3.5 l 5.5 -6.5" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="-18" y="0" font-size="13" fill="#006300">history recorded</text>
+    </g>
+    <g transform="translate(272,156)">
+      <circle cx="-34" cy="-5" r="9" fill="#0ca30c"/>
+      <path d="M -38 -5 l 3 3.5 l 5.5 -6.5" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="-18" y="0" font-size="13" fill="#006300">history checked</text>
+    </g>
+    <g transform="translate(448,156)">
+      <circle cx="-34" cy="-5" r="9" fill="#0ca30c"/>
+      <path d="M -38 -5 l 3 3.5 l 5.5 -6.5" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="-18" y="0" font-size="13" fill="#006300">history checked</text>
+    </g>
+    <g transform="translate(624,156)">
+      <circle cx="-34" cy="-5" r="9" fill="#0ca30c"/>
+      <path d="M -38 -5 l 3 3.5 l 5.5 -6.5" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="-18" y="0" font-size="13" fill="#006300">genuine, verified</text>
+    </g>
+  </g>
+
+  <!-- Counterfeit attempt -->
+  <g>
+    <rect x="120" y="240" width="220" height="76" rx="10" fill="#fdf0f0" stroke="#d03b3b" stroke-width="1.5" stroke-dasharray="6 4"/>
+    <text x="230" y="272" text-anchor="middle" font-size="14.5" font-weight="700" fill="#2c3e50">Counterfeit pack</text>
+    <text x="230" y="292" text-anchor="middle" font-size="13" fill="#6f6f6f">no recorded history</text>
+  </g>
+  <line x1="340" y1="258" x2="418" y2="180" stroke="#d03b3b" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrow-bad)"/>
+  <g transform="translate(384,222)">
+    <circle cx="0" cy="0" r="11" fill="#d03b3b"/>
+    <path d="M -4.5 -4.5 L 4.5 4.5 M 4.5 -4.5 L -4.5 4.5" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+  <text x="415" y="248" font-size="13.5" font-weight="700" fill="#d03b3b">rejected at the pharmacy —</text>
+  <text x="415" y="266" font-size="13" fill="#d03b3b">its story doesn't exist on the ledger</text>
+
+  <!-- Bottom note -->
+  <g>
+    <rect x="140" y="340" width="440" height="42" rx="21" fill="#f5f5f5" stroke="#d0d0d0" stroke-width="1.5"/>
+    <text x="360" y="366" text-anchor="middle" font-size="14" fill="#404040">The same idea protects <tspan font-weight="700">patient records</tspan>, shared only with consent</text>
+  </g>
+</svg>

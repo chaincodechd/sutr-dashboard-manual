@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380" font-family="Lato,'Helvetica Neue',Arial,sans-serif" role="img" aria-label="A customer completes identity checks once, receives a verified digital ID, and a bank, an insurer and a phone company all accept it instantly">
+  <defs>
+    <marker id="arrow-id" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8a8a8a"/>
+    </marker>
+  </defs>
+  <text x="360" y="30" text-anchor="middle" font-size="14" fill="#6f6f6f" font-style="italic">Prove who you are once — reuse that proof everywhere</text>
+
+  <!-- Customer -->
+  <g>
+    <rect x="30" y="140" width="170" height="100" rx="10" fill="#e7f7f1" stroke="#1baf7a" stroke-width="1.5"/>
+    <g stroke="#0e7a54" stroke-width="2" fill="none" stroke-linecap="round">
+      <circle cx="115" cy="168" r="8"/>
+      <path d="M 101 194 c 0 -9 6 -14 14 -14 c 8 0 14 5 14 14"/>
+    </g>
+    <text x="115" y="214" text-anchor="middle" font-size="14.5" font-weight="700" fill="#2c3e50">Customer</text>
+    <text x="115" y="232" text-anchor="middle" font-size="13" fill="#6f6f6f">completes ID checks once</text>
+  </g>
+
+  <line x1="200" y1="190" x2="256" y2="190" stroke="#8a8a8a" stroke-width="2" marker-end="url(#arrow-id)"/>
+
+  <!-- Verified digital ID -->
+  <g>
+    <rect x="260" y="150" width="190" height="80" rx="12" fill="#ffffff" stroke="#1baf7a" stroke-width="2"/>
+    <g transform="translate(292,190)">
+      <path d="M 0 -18 l 14 5 v 10 c 0 10 -6 16 -14 19 c -8 -3 -14 -9 -14 -19 v -10 z" fill="#1baf7a"/>
+      <path d="M -6 -1 l 4 4.5 l 8 -8.5" stroke="#ffffff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <text x="378" y="186" text-anchor="middle" font-size="14.5" font-weight="700" fill="#2c3e50">Verified</text>
+    <text x="378" y="205" text-anchor="middle" font-size="14.5" font-weight="700" fill="#2c3e50">digital ID</text>
+  </g>
+
+  <!-- Fan-out arrows -->
+  <g stroke="#8a8a8a" stroke-width="2">
+    <line x1="450" y1="170" x2="512" y2="112" marker-end="url(#arrow-id)"/>
+    <line x1="450" y1="190" x2="512" y2="190" marker-end="url(#arrow-id)"/>
+    <line x1="450" y1="210" x2="512" y2="268" marker-end="url(#arrow-id)"/>
+  </g>
+
+  <!-- Accepting organizations -->
+  <g>
+    <rect x="520" y="60" width="170" height="72" rx="10" fill="#eaf2f8" stroke="#2980b9" stroke-width="1.5"/>
+    <text x="605" y="90" text-anchor="middle" font-size="14.5" font-weight="700" fill="#2c3e50">Bank</text>
+    <circle cx="560" cy="108" r="8" fill="#0ca30c"/>
+    <path d="M 556.5 108 l 2.7 3 l 4.8 -5.7" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="574" y="112" font-size="13" fill="#006300">accepts instantly</text>
+  </g>
+  <g>
+    <rect x="520" y="154" width="170" height="72" rx="10" fill="#eeecf8" stroke="#4a3aa7" stroke-width="1.5"/>
+    <text x="605" y="184" text-anchor="middle" font-size="14.5" font-weight="700" fill="#2c3e50">Insurer</text>
+    <circle cx="560" cy="202" r="8" fill="#0ca30c"/>
+    <path d="M 556.5 202 l 2.7 3 l 4.8 -5.7" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="574" y="206" font-size="13" fill="#006300">accepts instantly</text>
+  </g>
+  <g>
+    <rect x="520" y="248" width="170" height="72" rx="10" fill="#fdefe9" stroke="#eb6834" stroke-width="1.5"/>
+    <text x="605" y="278" text-anchor="middle" font-size="14.5" font-weight="700" fill="#2c3e50">Phone company</text>
+    <circle cx="560" cy="296" r="8" fill="#0ca30c"/>
+    <path d="M 556.5 296 l 2.7 3 l 4.8 -5.7" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="574" y="300" font-size="13" fill="#006300">accepts instantly</text>
+  </g>
+
+  <!-- Bottom note -->
+  <g>
+    <rect x="110" y="336" width="500" height="34" rx="17" fill="#f5f5f5" stroke="#d0d0d0" stroke-width="1.5"/>
+    <text x="360" y="358" text-anchor="middle" font-size="13.5" fill="#404040">The customer stays in control of what is shared — no photocopies of documents floating around</text>
+  </g>
+</svg>
