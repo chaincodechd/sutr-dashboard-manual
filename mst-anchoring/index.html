@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>MST Anchoring - SutR Dashboard Manual</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+
+      <script>
+        // Current page data
+        var mkdocs_page_name = "MST Anchoring";
+        var mkdocs_page_input_path = "mst-anchoring.md";
+        var mkdocs_page_url = null;
+      </script>
+
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> SutR Dashboard Manual
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Login</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../ordering-service/">Ordering Service</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../certificate-authorities/">Certificate Authorities</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../organizations%28msp%29/">Organizations (MSP)</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../peers/">Peers</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../channels/">Channels</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">MST Anchoring</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#how-it-works">How it works</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#before-you-begin">Before you begin</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-1-deploy-the-mstanchor-contract">Step 1 — Deploy the MSTAnchor contract</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-2-configure-the-peer">Step 2 — Configure the peer</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-3-enable-anchoring-on-the-channel">Step 3 — Enable anchoring on the channel</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#enable-the-v2_5_mstanchor-capability">3a. Enable the capability</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#add-the-mstanchor-value">3b. Add the MSTAnchor value</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#allow-the-peer-role-in-writers">3c. Allow the peer role in Writers</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-4-run-the-preflight-check">Step 4 — Run the preflight check</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#step-5-confirm-anchoring-is-working">Step 5 — Confirm anchoring is working</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#reading-an-anchor-record">Reading an anchor record</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#verifying-a-transaction-end-to-end">Verifying a transaction end-to-end</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#configuration-reference">Configuration reference</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#peer-local-coreyaml">Peer-local (core.yaml)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#channel-governed-configtxyaml">Channel-governed (configtx.yaml)</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#command-reference">Command reference</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../use-cases/">Blockchain Use Cases</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">SutR Dashboard Manual</a>
+
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+      <li>MST Anchoring</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+
+                <h1 id="mst-proof-anchoring">MST Proof-Anchoring</h1>
+<p>MST proof-anchoring lets a channel record a tamper-evident <strong>proof</strong> of each of its transactions onto an external EVM chain (the MST chain), and then write a short <strong>anchor status</strong> back onto the Fabric ledger. It gives you an independent, publicly verifiable timestamp for Fabric activity without exposing any private data — only a one-way commitment (a hash) ever leaves the channel.</p>
+<p>This section explains what the feature does, what you must prepare, and how to turn it on for a channel you have already created in the dashboard (see <a href="../channels/">Channels</a>).</p>
+<blockquote>
+<p><strong>Note:</strong> MST anchoring is an <strong>opt-in</strong> feature and is <strong>off by default</strong>. A network that does not enable it behaves exactly like a standard Hyperledger Fabric network.</p>
+</blockquote>
+<hr/>
+<h2 id="how-it-works">How it works</h2>
+<p>Each participating peer runs an embedded pipeline:</p>
+<ol>
+<li><strong>Capture</strong> — as blocks commit, the peer computes a canonical <strong>commitment</strong> (a hash) for each in-scope transaction and stores it in a durable local outbox.</li>
+<li><strong>Anchor</strong> — a relayer submits the commitment to the channel's <strong>MSTAnchor smart contract</strong> on the EVM/MST chain and waits for confirmations.</li>
+<li><strong>Write-back</strong> — once anchored, the peer records an <strong>anchor status</strong> on the Fabric ledger through the built-in <code>mstscc</code> system chaincode, so any channel member can query "is transaction X anchored, and where?"</li>
+</ol>
+<p>Nothing but the commitment hash is published. To <em>prove</em> a transaction later, you recompute its commitment and compare it against the on-chain record with the <code>peer mst verify</code> command.</p>
+<p><img alt="MST anchoring data flow: blocks commit on the private Fabric channel, each transaction is hashed into a commitment, a relayer anchors the hash on the public MST chain, and the confirmed anchor status is written back to the Fabric ledger" src="../assets/mst-anchoring-flow.svg" /></p>
+<hr/>
+<h2 id="before-you-begin">Before you begin</h2>
+<p>Make sure all of the following are in place. Each is a hard requirement; the <code>peer mst preflight</code> command (below) checks most of them for you.</p>
+<table class="docutils">
+<thead>
+<tr><th>Requirement</th><th>Why</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>All peers and orderers run the MST-enabled binary</strong></td><td>The channel enables a capability (<code>V2_5_MSTANCHOR</code>) that a stock binary refuses. Every peer <em>and</em> orderer on the channel must be the MST build.</td></tr>
+<tr><td><strong><code>mstscc</code> enabled</strong> in each peer's <code>core.yaml</code> (<code>chaincode.system.mstscc: enable</code>)</td><td>It is the write-back target.</td></tr>
+<tr><td><strong>NodeOUs enabled</strong> on every organization's MSP</td><td>The write-back is authorized only for a <strong>peer-role</strong> identity; without NodeOUs the classification is unavailable and write-backs are rejected.</td></tr>
+<tr><td><strong>An EVM / MST endpoint</strong> (JSON-RPC URL) reachable from each anchoring peer</td><td>The relayer submits anchors there.</td></tr>
+<tr><td><strong>A deployed MSTAnchor contract</strong> (one per channel)</td><td>The on-chain anchor registry. Deploy it out of band and record its address.</td></tr>
+<tr><td><strong>A funded relayer account</strong> on the MST chain</td><td>The relayer pays gas for anchor transactions.</td></tr>
+<tr><td><strong>The relayer wallet authorized</strong> on the contract (<code>setRelayer</code>)</td><td>Only allowlisted wallets may write anchors.</td></tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Tip:</strong> Run anchoring on a <strong>small, designated set</strong> of peers (for example one per organization, optionally with one hot-standby), not on every peer. Extra anchoring peers only produce redundant work — the feature is safe with any number, but there is no benefit to running it everywhere.</p>
+</blockquote>
+<p><img alt="Five setup steps: deploy the contract and authorize the relayer, configure the peers, update the channel configuration, run preflight, then confirm anchoring" src="../assets/mst-setup-steps.svg" /></p>
+<hr/>
+<h2 id="step-1-deploy-the-mstanchor-contract">Step 1 — Deploy the MSTAnchor contract and authorize the relayer</h2>
+<p>Deploy one MSTAnchor contract for the channel on your MST chain (a transparent upgradeable proxy is recommended so the address stays stable). Then add each anchoring peer's relayer wallet to the contract's allowlist:</p>
+<pre><code class="language-bash"># from the peer CLI, using an owner key on the contract
+peer mst relayer add 0xRelayerWalletAddress -C mychannel
+</code></pre>
+<p>Record the contract <strong>address</strong> and the chain's <strong>chain id</strong> — you will enter both into the channel configuration in Step 3.</p>
+<hr/>
+<h2 id="step-2-configure-the-peer">Step 2 — Configure the peer (<code>core.yaml</code>)</h2>
+<p>On each <strong>anchoring</strong> peer, enable the pipeline and point it at the MST endpoint and the relayer identity. Only peer-local plumbing lives here; the anchoring <em>policy</em> is set on the channel (Step 3).</p>
+<pre><code class="language-yaml">mst:
+    enabled: true
+    # Channels to anchor; empty = every channel this peer joins.
+    channels: []
+    evm:
+        # This peer's MST RPC endpoint.
+        rpcURL: http://127.0.0.1:8545
+        # Warn once a minute when the relayer's gas balance is low (gwei); 0 = off.
+        minBalanceGwei: 0
+    # Fabric identity that submits the write-back. MUST be a peer-role (NodeOUs)
+    # node identity — the peer's own signcert — not a client/admin certificate.
+    writeback:
+        mspID: Org1MSP
+        certPath: /var/hyperledger/.../peers/peer0.org1.example.com/msp/signcerts/cert.pem
+        keyPath:  /var/hyperledger/.../peers/peer0.org1.example.com/msp/keystore/priv_sk
+    # Serves Prometheus /metrics and /healthz; empty disables.
+    metricsAddr: ""
+</code></pre>
+<p>Also confirm, in the same <code>core.yaml</code>:</p>
+<ul>
+<li><code>peer.gateway.enabled: true</code> and <code>peer.discovery.enabled: true</code> — the write-back submits through the embedded gateway.</li>
+<li><code>chaincode.system.mstscc: enable</code>.</li>
+</ul>
+<blockquote>
+<p><strong>Note:</strong> Keep the relayer's EVM private key <strong>out of files</strong>. Provide it via an environment variable or secret store, never a committed config.</p>
+</blockquote>
+<p>Restart the peer after editing <code>core.yaml</code>.</p>
+<hr/>
+<h2 id="step-3-enable-anchoring-on-the-channel">Step 3 — Enable anchoring on the channel</h2>
+<p>Anchoring is a <strong>channel-level, all-org-agreed</strong> setting. Two things go into the channel configuration together:</p>
+<h3 id="enable-the-v2_5_mstanchor-capability">3a. Enable the <code>V2_5_MSTANCHOR</code> capability</h3>
+<p>Under <code>Application</code> capabilities, add:</p>
+<pre><code class="language-yaml">Capabilities:
+    Application:
+        V2_5: true
+        V2_5_MSTANCHOR: true
+</code></pre>
+<h3 id="add-the-mstanchor-value">3b. Add the <code>MSTAnchor</code> value</h3>
+<pre><code class="language-yaml">Application:
+    # ...
+    MSTAnchor:
+        Enabled: true
+        ContractAddress: "0xYourPerChannelMSTAnchorContractAddress"
+        ChainID: 1337
+        CaptureMode: opt-in            # "opt-in" (scoped) or "all"
+        # IncludeChaincodes: [myapp]   # only these chaincodes (opt-in mode)
+        # ExcludeChaincodes: []
+        BatchStrategy: individual      # "individual" or "merkle"
+        Confirmations: 1
+        # Flush cadence (latency vs gas): per-tx | batch | interval | cron
+        CadenceMode: per-tx
+</code></pre>
+<h3 id="allow-the-peer-role-in-writers">3c. Allow the peer role in the channel <code>Writers</code> policy</h3>
+<p>This is easy to miss. The write-back is signed by a <strong>peer-role</strong> identity, but the orderer evaluates the transaction against the channel <code>Writers</code> policy — whose NodeOUs default is <code>OR('Org.admin','Org.client')</code>, which <strong>excludes</strong> the peer role. For each anchoring organization, widen <code>Writers</code> to include <code>peer</code>:</p>
+<pre><code class="language-yaml">Writers:
+    Type: Signature
+    Rule: "OR('Org1MSP.admin','Org1MSP.client','Org1MSP.peer')"
+</code></pre>
+<p>Apply all three as a normal channel-configuration update.</p>
+<blockquote>
+<p><strong>Note:</strong> Setting <code>MSTAnchor</code> <strong>requires</strong> <code>V2_5_MSTANCHOR</code>; the configuration is rejected without it. This is deliberate — it turns "every peer must run the MST binary" into an explicit, safe upgrade gate.</p>
+</blockquote>
+<hr/>
+<h2 id="step-4-run-the-preflight-check">Step 4 — Run the preflight check</h2>
+<p>Before (or right after) applying the change, validate the channel against the live chain:</p>
+<pre><code class="language-bash">peer mst preflight -C mychannel
+</code></pre>
+<p>It reports a checklist:</p>
+<pre><code>channel: mychannel
+[PASS] enabled       MST anchoring is enabled
+[PASS] rpc endpoint  connected; node reports chain id 1337
+[PASS] chain id      config chainID 1337 matches the node
+[PASS] contract      0x... responds as an MSTAnchor contract
+[PASS] nodeous       all application org(s) have NodeOUs peer classification
+[PASS] writers       all application org(s) admit the peer role in their Writers policy
+
+preflight: OK
+</code></pre>
+<p>Any <code>FAIL</code> line tells you exactly what to fix (unreachable RPC, wrong chain id, missing contract, NodeOUs not enabled, or <code>Writers</code> that rejects the peer role).</p>
+<hr/>
+<h2 id="step-5-confirm-anchoring-is-working">Step 5 — Confirm anchoring is working</h2>
+<p>Submit a normal transaction to an in-scope chaincode on the channel, then check its anchor status:</p>
+<pre><code class="language-bash"># was this Fabric transaction anchored, and where?
+peer mst status &lt;fabric-tx-id&gt; -C mychannel
+</code></pre>
+<pre><code>fabric tx id : 7e27d846dc6d4c09...
+anchor ref   : 0xaad9229fdd7f3770...
+status       : CONFIRMED
+recorded at  : 2026-07-20T10:53:07Z
+</code></pre>
+<p>Other useful queries:</p>
+<pre><code class="language-bash">peer mst count -C mychannel              # how many anchors recorded
+peer mst list  -C mychannel              # list recorded anchors
+peer mst is-anchored &lt;fabric-tx-id&gt; -C mychannel
+</code></pre>
+<hr/>
+<h2 id="reading-an-anchor-record">Reading an anchor record</h2>
+<p>The <code>mstscc</code> ledger record for a transaction has four fields:</p>
+<table class="docutils">
+<thead>
+<tr><th>Field</th><th>Meaning</th></tr>
+</thead>
+<tbody>
+<tr><td><code>fabric_tx_id</code></td><td>The Fabric transaction that was anchored.</td></tr>
+<tr><td><code>anchor_ref</code></td><td>The <strong>EVM transaction hash</strong> where the commitment was recorded on the MST chain (<code>0x</code> + 64 hex). A pointer you can open in an EVM explorer.</td></tr>
+<tr><td><code>status</code></td><td><code>CONFIRMED</code> — a peer node asserts the transaction is anchored.</td></tr>
+<tr><td><code>recorded_at</code></td><td>Timestamp of the write-back transaction.</td></tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Important:</strong> The ledger record is an <strong>attestation plus a pointer</strong>, not a proof. <code>mstscc</code> cannot read EVM state, so it stores what a peer asserts. For certainty, resolve the pointer against the real chain with <code>peer mst verify</code> (below), which recomputes the commitment and checks the on-chain anchor.</p>
+</blockquote>
+<hr/>
+<h2 id="verifying-a-transaction-end-to-end">Verifying a transaction end-to-end</h2>
+<p>To independently prove a transaction is anchored — recompute its commitment from the ledger and compare it against the on-chain record:</p>
+<pre><code class="language-bash">peer mst verify &lt;fabric-tx-id&gt; -C mychannel
+</code></pre>
+<pre><code>commitment        : 0x3ab0bcd340eae529...
+fabric ledger fact: recorded (ref 0xaad9229f...)
+on-chain anchor   : commitment 0x3ab0bcd340eae529..., block 42
+result            : MATCH
+</code></pre>
+<p><img alt="peer mst verify recomputes the commitment from the Fabric ledger, reads the anchor from the MST chain, compares the two and reports MATCH" src="../assets/mst-verify.svg" /></p>
+<p>Exit code <code>0</code> = <code>MATCH</code>, non-zero = no match / not anchored. Verification reads the on-chain anchor <strong>by transaction id</strong>, so it succeeds even if the human-facing <code>anchor_ref</code> pointer is missing.</p>
+<hr/>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<table class="docutils">
+<thead>
+<tr><th>Symptom</th><th>Cause and fix</th></tr>
+</thead>
+<tbody>
+<tr><td><code>configtxlator: Unknown Application ConfigValue name: MSTAnchor</code></td><td>You are running a <strong>stock</strong> <code>configtxlator</code>. Use the MST build for <code>configtxlator</code>, <code>configtxgen</code>, <code>peer</code>, and <code>orderer</code>.</td></tr>
+<tr><td>Write-back rejected with <code>FORBIDDEN ... 'Writers'</code> from the orderer</td><td>The channel <code>Writers</code> policy excludes the peer role — add it (Step 3c).</td></tr>
+<tr><td>Anchors land on-chain but no ledger status appears</td><td>The write-back org lacks NodeOUs, or <code>mst.writeback.*</code> points at a client cert instead of the peer's node signcert. Check <code>peer mst preflight</code> and the peer startup warning.</td></tr>
+<tr><td><code>RecordAnchor invalidated: INVALID_CHAINCODE</code></td><td>The peer binary predates the <code>mstscc</code> validation support — rebuild with the current MST binary.</td></tr>
+<tr><td><code>MVCC_READ_CONFLICT</code> warning in the committer log</td><td>Benign: two write-backs for the same anchor raced; one recorded it, the other is a harmless duplicate. The anchor <strong>is</strong> recorded. Reduce it by running anchoring on fewer peers.</td></tr>
+<tr><td><code>anchor ref</code> shows <code>0x0000...0000</code></td><td>The write-back could not determine the anchoring tx hash. It does not affect verification (which reads on-chain by transaction id).</td></tr>
+<tr><td><code>anchor_ref</code> differs from a peer's local <code>evm_tx_hash</code></td><td>Expected after a retry or with multiple peers: the record holds the tx that actually anchored the commitment, while a peer's outbox holds its own latest (possibly no-op) submission.</td></tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="configuration-reference">Configuration reference</h2>
+<h3 id="peer-local-coreyaml">Peer-local (<code>core.yaml</code>, <code>mst:</code> section)</h3>
+<table class="docutils">
+<thead>
+<tr><th>Key</th><th>Purpose</th></tr>
+</thead>
+<tbody>
+<tr><td><code>enabled</code></td><td>Turn the embedded pipeline on for this peer.</td></tr>
+<tr><td><code>channels</code></td><td>Peer-local opt-out list; empty = all joined channels.</td></tr>
+<tr><td><code>evm.rpcURL</code></td><td>This peer's MST JSON-RPC endpoint.</td></tr>
+<tr><td><code>evm.minBalanceGwei</code></td><td>Low-gas-balance warning threshold (gwei); 0 = off.</td></tr>
+<tr><td><code>writeback.mspID</code> / <code>certPath</code> / <code>keyPath</code></td><td>The <strong>peer-role</strong> identity that signs the write-back.</td></tr>
+<tr><td><code>outboxPath</code></td><td>Local durable outbox directory (LevelDB backend).</td></tr>
+<tr><td><code>metricsAddr</code></td><td>Prometheus <code>/metrics</code> + <code>/healthz</code> address; empty disables.</td></tr>
+</tbody>
+</table>
+<h3 id="channel-governed-configtxyaml">Channel-governed (<code>configtx.yaml</code>, <code>Application.MSTAnchor</code>)</h3>
+<table class="docutils">
+<thead>
+<tr><th>Key</th><th>Purpose</th></tr>
+</thead>
+<tbody>
+<tr><td><code>Enabled</code></td><td>Turn anchoring on for the channel.</td></tr>
+<tr><td><code>ContractAddress</code></td><td>The channel's MSTAnchor contract (<code>0x</code> address).</td></tr>
+<tr><td><code>ChainID</code></td><td>Expected MST chain id (pins the chain).</td></tr>
+<tr><td><code>CaptureMode</code></td><td><code>opt-in</code> (scoped) or <code>all</code> (every transaction).</td></tr>
+<tr><td><code>IncludeChaincodes</code> / <code>ExcludeChaincodes</code></td><td>Anchoring scope in <code>opt-in</code> mode.</td></tr>
+<tr><td><code>BatchStrategy</code></td><td><code>individual</code> (per-tx record) or <code>merkle</code> (one root per batch).</td></tr>
+<tr><td><code>Confirmations</code></td><td>On-chain confirmations required before write-back.</td></tr>
+<tr><td><code>CadenceMode</code> + <code>CadenceN</code> / <code>CadenceInterval</code> / <code>CadenceCron</code> / <code>CadenceMaxWait</code></td><td>Flush cadence — trades anchoring latency against gas cost.</td></tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="command-reference">Command reference (<code>peer mst</code>)</h2>
+<table class="docutils">
+<thead>
+<tr><th>Command</th><th>Description</th></tr>
+</thead>
+<tbody>
+<tr><td><code>peer mst preflight</code></td><td>Validate the channel's MST config against the live chain.</td></tr>
+<tr><td><code>peer mst status &lt;txid&gt;</code></td><td>Show the ledger anchor status for a transaction.</td></tr>
+<tr><td><code>peer mst is-anchored &lt;txid&gt;</code></td><td>Yes/no whether a transaction is anchored.</td></tr>
+<tr><td><code>peer mst list</code></td><td>List anchor records on the channel.</td></tr>
+<tr><td><code>peer mst count</code></td><td>Count anchor records on the channel.</td></tr>
+<tr><td><code>peer mst verify &lt;txid&gt;</code></td><td>Recompute the commitment and compare it against the chain (proof).</td></tr>
+<tr><td><code>peer mst channel-config</code></td><td>Show the channel's effective MST configuration.</td></tr>
+<tr><td><code>peer mst onchain &lt;txid&gt;</code></td><td>Read the anchor directly from the contract.</td></tr>
+<tr><td><code>peer mst relayer add|remove &lt;wallet&gt;</code></td><td>Manage the contract's relayer allowlist.</td></tr>
+<tr><td><code>peer mst pipeline</code></td><td>Inspect the embedded pipeline / outbox status.</td></tr>
+</tbody>
+</table>
+<p>Add <code>-C &lt;channel&gt;</code> (and, where relevant, <code>--peerAddresses</code> / <code>--rpc</code>) to any of the above.</p>
+
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../channels/" class="btn btn-neutral float-left" title="Channels"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../use-cases/" class="btn btn-neutral float-right" title="Blockchain Use Cases">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+
+
+      <span><a href="../channels/" style="color: #fcfcfc">&laquo; Previous</a></span>
+
+
+      <span><a href="../use-cases/" style="color: #fcfcfc">Next &raquo;</a></span>
+
+
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
