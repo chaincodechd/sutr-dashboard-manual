@@ -138,8 +138,8 @@
             <div class="section" itemprop="articleBody">
 
                 <h1 id="mst-proof-anchoring">MST Proof-Anchoring</h1>
-<p>MST proof-anchoring lets a channel record a tamper-evident <strong>proof</strong> of each of its transactions onto an external EVM chain (the MST chain), and then write a short <strong>anchor status</strong> back onto the Fabric ledger. It gives you an independent, publicly verifiable timestamp for Fabric activity without exposing any private data — only a one-way commitment (a hash) ever leaves the channel.</p>
-<p>This section explains what the feature does, what you must prepare, and how to turn it on for a channel you have already created in the dashboard (see <a href="../channels/">Channels</a>).</p>
+<p>MST proof-anchoring lets a channel record a tamper-evident <strong>proof</strong> of each of its transactions onto the <a href="https://mstblockchain.com/">MST Blockchain</a>, and then write a short <strong>anchor status</strong> back onto the Fabric ledger. It gives you an independent, publicly verifiable timestamp for Fabric activity without exposing any private data — only a one-way commitment (a hash) ever leaves the channel.</p>
+<p>This section explains what the feature does, what you must prepare, and how to turn it on for a channel you have already created in the dashboard (see <a href="../channels/">Channels</a>). To learn more about the MST Blockchain itself, visit <a href="https://mstblockchain.com/">mstblockchain.com</a>.</p>
 <blockquote>
 <p><strong>Note:</strong> MST anchoring is an <strong>opt-in</strong> feature and is <strong>off by default</strong>. A network that does not enable it behaves exactly like a standard Hyperledger Fabric network.</p>
 </blockquote>
@@ -148,11 +148,11 @@
 <p>Each participating peer runs an embedded pipeline:</p>
 <ol>
 <li><strong>Capture</strong> — as blocks commit, the peer computes a canonical <strong>commitment</strong> (a hash) for each in-scope transaction and stores it in a durable local outbox.</li>
-<li><strong>Anchor</strong> — a relayer submits the commitment to the channel's <strong>MSTAnchor smart contract</strong> on the EVM/MST chain and waits for confirmations.</li>
+<li><strong>Anchor</strong> — a relayer submits the commitment to the channel's <strong>MSTAnchor smart contract</strong> on the MST Blockchain and waits for confirmations.</li>
 <li><strong>Write-back</strong> — once anchored, the peer records an <strong>anchor status</strong> on the Fabric ledger through the built-in <code>mstscc</code> system chaincode, so any channel member can query "is transaction X anchored, and where?"</li>
 </ol>
 <p>Nothing but the commitment hash is published. To <em>prove</em> a transaction later, you recompute its commitment and compare it against the on-chain record with the <code>peer mst verify</code> command.</p>
-<p><img alt="MST anchoring data flow: blocks commit on the private Fabric channel, each transaction is hashed into a commitment, a relayer anchors the hash on the public MST chain, and the confirmed anchor status is written back to the Fabric ledger" src="../assets/mst-anchoring-flow.svg" /></p>
+<p><img alt="MST anchoring data flow: blocks commit on the private Fabric channel, each transaction is hashed into a commitment, a relayer anchors the hash on the public MST Blockchain, and the confirmed anchor status is written back to the Fabric ledger" src="../assets/mst-anchoring-flow.svg" /></p>
 <hr/>
 <h2 id="before-you-begin">Before you begin</h2>
 <p>Make sure all of the following are in place. Each is a hard requirement; the <code>peer mst preflight</code> command (below) checks most of them for you.</p>
@@ -164,9 +164,9 @@
 <tr><td><strong>All peers and orderers run the MST-enabled binary</strong></td><td>The channel enables a capability (<code>V2_5_MSTANCHOR</code>) that a stock binary refuses. Every peer <em>and</em> orderer on the channel must be the MST build.</td></tr>
 <tr><td><strong><code>mstscc</code> enabled</strong> in each peer's <code>core.yaml</code> (<code>chaincode.system.mstscc: enable</code>)</td><td>It is the write-back target.</td></tr>
 <tr><td><strong>NodeOUs enabled</strong> on every organization's MSP</td><td>The write-back is authorized only for a <strong>peer-role</strong> identity; without NodeOUs the classification is unavailable and write-backs are rejected.</td></tr>
-<tr><td><strong>An EVM / MST endpoint</strong> (JSON-RPC URL) reachable from each anchoring peer</td><td>The relayer submits anchors there.</td></tr>
+<tr><td><strong>An MST Blockchain endpoint</strong> (JSON-RPC URL) reachable from each anchoring peer</td><td>The relayer submits anchors there.</td></tr>
 <tr><td><strong>A deployed MSTAnchor contract</strong> (one per channel)</td><td>The on-chain anchor registry. Deploy it out of band and record its address.</td></tr>
-<tr><td><strong>A funded relayer account</strong> on the MST chain</td><td>The relayer pays gas for anchor transactions.</td></tr>
+<tr><td><strong>A funded relayer account</strong> on the MST Blockchain</td><td>The relayer pays gas for anchor transactions.</td></tr>
 <tr><td><strong>The relayer wallet authorized</strong> on the contract (<code>setRelayer</code>)</td><td>Only allowlisted wallets may write anchors.</td></tr>
 </tbody>
 </table>
@@ -176,7 +176,7 @@
 <p><img alt="Five setup steps: deploy the contract and authorize the relayer, configure the peers, update the channel configuration, run preflight, then confirm anchoring" src="../assets/mst-setup-steps.svg" /></p>
 <hr/>
 <h2 id="enabling-anchoring-from-the-dashboard">Enabling anchoring from the dashboard</h2>
-<p>The quickest way to switch anchoring on is at channel-creation time. In the <strong>Channels</strong> module, click <strong>Create Channel</strong> (as described in <a href="../channels/">Channels</a>), fill in the ordering service, channel name and creator organization as usual, and expand <strong>Advanced Configurations</strong>. Below the block-cutting parameters you will find an <strong>Enable MST Anchoring</strong> checkbox. Leave it unticked and the channel behaves as a completely standard Fabric channel; tick it if this channel should anchor its transactions to the MST chain.</p>
+<p>The quickest way to switch anchoring on is at channel-creation time. In the <strong>Channels</strong> module, click <strong>Create Channel</strong> (as described in <a href="../channels/">Channels</a>), fill in the ordering service, channel name and creator organization as usual, and expand <strong>Advanced Configurations</strong>. Below the block-cutting parameters you will find an <strong>Enable MST Anchoring</strong> checkbox. Leave it unticked and the channel behaves as a completely standard Fabric channel; tick it if this channel should anchor its transactions to the MST Blockchain.</p>
 <p><img alt="Create Channel dialog with the Enable MST Anchoring checkbox under Advanced Configurations" src="../assets/enable-mst-anchoring.png" /></p>
 <p>Ticking the checkbox expands the MST anchoring configuration form:</p>
 <p><img alt="MST anchoring configuration form with RPC endpoint, chain id, capture mode, batch strategy, confirmations, flush cadence and chaincode filtering" src="../assets/mst-anchoring-config.png" /></p>
@@ -187,12 +187,12 @@
 </thead>
 <tbody>
 <tr><td><strong>Enable MST Anchoring</strong></td><td>The master switch — unticked means no anchoring and no MST configuration on the channel.</td></tr>
-<tr><td><strong>RPC Endpoint</strong> (required)</td><td>The JSON-RPC URL of the MST/EVM node that anchor transactions are submitted to.</td></tr>
+<tr><td><strong>RPC Endpoint</strong> (required)</td><td>The JSON-RPC URL of the MST Blockchain node that anchor transactions are submitted to.</td></tr>
 <tr><td><strong>Chain ID</strong> (required)</td><td>The chain id the endpoint must report (for example <code>1337</code>) — pins the channel to that one chain.</td></tr>
 <tr><td><strong>Capture Mode</strong></td><td>What gets anchored: <code>opt-in</code> (default) scopes anchoring to selected chaincodes, <code>all</code> anchors every transaction on the channel.</td></tr>
 <tr><td><strong>Batch Strategy</strong></td><td><code>individual</code> (default) records one anchor per transaction (roughly 40% gas savings); <code>merkle</code> records one root per batch (roughly 95% savings) — the economical choice at volume.</td></tr>
 <tr><td><strong>Confirmations</strong></td><td>How many blocks to wait before an anchor is marked <code>CONFIRMED</code> — the guard against chain reorganisations.</td></tr>
-<tr><td><strong>Cadence Mode</strong></td><td>When anchors are flushed to the MST chain: <code>per-tx</code> (default) immediately, <code>batch</code> after every N transactions, <code>interval</code> on a fixed timer, <code>cron</code> on a schedule — a latency-versus-gas trade-off.</td></tr>
+<tr><td><strong>Cadence Mode</strong></td><td>When anchors are flushed to the MST Blockchain: <code>per-tx</code> (default) immediately, <code>batch</code> after every N transactions, <code>interval</code> on a fixed timer, <code>cron</code> on a schedule — a latency-versus-gas trade-off.</td></tr>
 <tr><td><strong>Include Chaincodes</strong> (optional)</td><td>In <code>opt-in</code> mode, anchor only transactions from these chaincodes.</td></tr>
 <tr><td><strong>Exclude Chaincodes</strong> (optional)</td><td>Never anchor transactions from these chaincodes.</td></tr>
 </tbody>
@@ -200,7 +200,7 @@
 <p>Click <strong>Create</strong> and the dashboard applies these anchoring settings as part of the new channel's configuration — the dashboard equivalent of the channel-side settings in <a href="#step-3-enable-anchoring-on-the-channel">Step 3</a>. The peer-side preparation still applies (see <a href="#before-you-begin">Before you begin</a> and Step 2), so run the preflight check from Step 4 afterwards to confirm every requirement — MST binary, NodeOUs, contract, <code>Writers</code> policy — is satisfied.</p>
 <hr/>
 <h2 id="step-1-deploy-the-mstanchor-contract">Step 1 — Deploy the MSTAnchor contract and authorize the relayer</h2>
-<p>Deploy one MSTAnchor contract for the channel on your MST chain (a transparent upgradeable proxy is recommended so the address stays stable). Then add each anchoring peer's relayer wallet to the contract's allowlist:</p>
+<p>Deploy one MSTAnchor contract for the channel on the MST Blockchain (a transparent upgradeable proxy is recommended so the address stays stable). Then add each anchoring peer's relayer wallet to the contract's allowlist:</p>
 <pre><code class="language-bash"># from the peer CLI, using an owner key on the contract
 peer mst relayer add 0xRelayerWalletAddress -C mychannel
 </code></pre>
@@ -232,7 +232,7 @@ peer mst relayer add 0xRelayerWalletAddress -C mychannel
 <li><code>chaincode.system.mstscc: enable</code>.</li>
 </ul>
 <blockquote>
-<p><strong>Note:</strong> Keep the relayer's EVM private key <strong>out of files</strong>. Provide it via an environment variable or secret store, never a committed config.</p>
+<p><strong>Note:</strong> Keep the relayer's MST wallet private key <strong>out of files</strong>. Provide it via an environment variable or secret store, never a committed config.</p>
 </blockquote>
 <p>Restart the peer after editing <code>core.yaml</code>.</p>
 <hr/>
@@ -315,13 +315,13 @@ peer mst is-anchored &lt;fabric-tx-id&gt; -C mychannel
 </thead>
 <tbody>
 <tr><td><code>fabric_tx_id</code></td><td>The Fabric transaction that was anchored.</td></tr>
-<tr><td><code>anchor_ref</code></td><td>The <strong>EVM transaction hash</strong> where the commitment was recorded on the MST chain (<code>0x</code> + 64 hex). A pointer you can open in an EVM explorer.</td></tr>
+<tr><td><code>anchor_ref</code></td><td>The <strong>MST Blockchain transaction hash</strong> where the commitment was recorded (<code>0x</code> + 64 hex). A pointer you can open in the MST explorer.</td></tr>
 <tr><td><code>status</code></td><td><code>CONFIRMED</code> — a peer node asserts the transaction is anchored.</td></tr>
 <tr><td><code>recorded_at</code></td><td>Timestamp of the write-back transaction.</td></tr>
 </tbody>
 </table>
 <blockquote>
-<p><strong>Important:</strong> The ledger record is an <strong>attestation plus a pointer</strong>, not a proof. <code>mstscc</code> cannot read EVM state, so it stores what a peer asserts. For certainty, resolve the pointer against the real chain with <code>peer mst verify</code> (below), which recomputes the commitment and checks the on-chain anchor.</p>
+<p><strong>Important:</strong> The ledger record is an <strong>attestation plus a pointer</strong>, not a proof. <code>mstscc</code> cannot read MST Blockchain state, so it stores what a peer asserts. For certainty, resolve the pointer against the real chain with <code>peer mst verify</code> (below), which recomputes the commitment and checks the on-chain anchor.</p>
 </blockquote>
 <hr/>
 <h2 id="verifying-a-transaction-end-to-end">Verifying a transaction end-to-end</h2>
@@ -333,7 +333,7 @@ fabric ledger fact: recorded (ref 0xaad9229f...)
 on-chain anchor   : commitment 0x3ab0bcd340eae529..., block 42
 result            : MATCH
 </code></pre>
-<p><img alt="peer mst verify recomputes the commitment from the Fabric ledger, reads the anchor from the MST chain, compares the two and reports MATCH" src="../assets/mst-verify.svg" /></p>
+<p><img alt="peer mst verify recomputes the commitment from the Fabric ledger, reads the anchor from the MST Blockchain, compares the two and reports MATCH" src="../assets/mst-verify.svg" /></p>
 <p>Exit code <code>0</code> = <code>MATCH</code>, non-zero = no match / not anchored. Verification reads the on-chain anchor <strong>by transaction id</strong>, so it succeeds even if the human-facing <code>anchor_ref</code> pointer is missing.</p>
 <hr/>
 <h2 id="troubleshooting">Troubleshooting</h2>
@@ -376,7 +376,7 @@ result            : MATCH
 <tbody>
 <tr><td><code>Enabled</code></td><td>Turn anchoring on for the channel.</td></tr>
 <tr><td><code>ContractAddress</code></td><td>The channel's MSTAnchor contract (<code>0x</code> address).</td></tr>
-<tr><td><code>ChainID</code></td><td>Expected MST chain id (pins the chain).</td></tr>
+<tr><td><code>ChainID</code></td><td>Expected MST Blockchain chain id (pins the chain).</td></tr>
 <tr><td><code>CaptureMode</code></td><td><code>opt-in</code> (scoped) or <code>all</code> (every transaction).</td></tr>
 <tr><td><code>IncludeChaincodes</code> / <code>ExcludeChaincodes</code></td><td>Anchoring scope in <code>opt-in</code> mode.</td></tr>
 <tr><td><code>BatchStrategy</code></td><td><code>individual</code> (per-tx record) or <code>merkle</code> (one root per batch).</td></tr>

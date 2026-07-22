@@ -13,7 +13,7 @@
     <text x="77" y="104" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2c3e50">Deploy the</text>
     <text x="77" y="121" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2c3e50">contract</text>
     <text x="77" y="143" text-anchor="middle" font-size="12" fill="#6f6f6f">authorize the relayer</text>
-    <text x="77" y="159" text-anchor="middle" font-size="12" fill="#6f6f6f">wallet on the MST chain</text>
+    <text x="77" y="159" text-anchor="middle" font-size="11" fill="#6f6f6f">wallet on the MST Blockchain</text>
   </g>
   <line x1="142" y1="119" x2="153" y2="119" stroke="#8a8a8a" stroke-width="2" marker-end="url(#arr-st)"/>
 
