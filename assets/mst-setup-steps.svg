@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 252" font-family="Lato,'Helvetica Neue',Arial,sans-serif" role="img" aria-label="Five setup steps: deploy the contract and authorize the relayer, configure the peers, update the channel configuration, run preflight, then confirm anchoring">
+  <defs>
+    <marker id="arr-st" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8a8a8a"/>
+    </marker>
+  </defs>
+  <text x="360" y="26" text-anchor="middle" font-size="14" fill="#6f6f6f" font-style="italic">Five steps from zero to anchored</text>
+
+  <g>
+    <rect x="12" y="44" width="130" height="150" rx="10" fill="#f6fafd" stroke="#2980b9" stroke-width="1.5"/>
+    <circle cx="77" cy="70" r="14" fill="#2980b9"/>
+    <text x="77" y="75" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">1</text>
+    <text x="77" y="104" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2c3e50">Deploy the</text>
+    <text x="77" y="121" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2c3e50">contract</text>
+    <text x="77" y="143" text-anchor="middle" font-size="12" fill="#6f6f6f">authorize the relayer</text>
+    <text x="77" y="159" text-anchor="middle" font-size="12" fill="#6f6f6f">wallet on the MST chain</text>
+  </g>
+  <line x1="142" y1="119" x2="153" y2="119" stroke="#8a8a8a" stroke-width="2" marker-end="url(#arr-st)"/>
+
+  <g>
+    <rect x="157" y="44" width="130" height="150" rx="10" fill="#f6fafd" stroke="#2980b9" stroke-width="1.5"/>
+    <circle cx="222" cy="70" r="14" fill="#2980b9"/>
+    <text x="222" y="75" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">2</text>
+    <text x="222" y="104" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2c3e50">Configure the</text>
+    <text x="222" y="121" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2c3e50">peers</text>
+    <text x="222" y="143" text-anchor="middle" font-size="12" font-family="'Courier New',monospace" fill="#1c5cab">mst:</text>
+    <text x="222" y="159" text-anchor="middle" font-size="12" fill="#6f6f6f">section in core.yaml</text>
+  </g>
+  <line x1="287" y1="119" x2="298" y2="119" stroke="#8a8a8a" stroke-width="2" marker-end="url(#arr-st)"/>
+
+  <g>
+    <rect x="302" y="44" width="130" height="150" rx="10" fill="#f6fafd" stroke="#2980b9" stroke-width="1.5"/>
+    <circle cx="367" cy="70" r="14" fill="#2980b9"/>
+    <text x="367" y="75" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">3</text>
+    <text x="367" y="104" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2c3e50">Update the</text>
+    <text x="367" y="121" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2c3e50">channel config</text>
+    <text x="367" y="143" text-anchor="middle" font-size="12" fill="#6f6f6f">capability + MSTAnchor</text>
+    <text x="367" y="159" text-anchor="middle" font-size="12" fill="#6f6f6f">+ Writers policy</text>
+  </g>
+  <line x1="432" y1="119" x2="443" y2="119" stroke="#8a8a8a" stroke-width="2" marker-end="url(#arr-st)"/>
+
+  <g>
+    <rect x="447" y="44" width="130" height="150" rx="10" fill="#f6fafd" stroke="#2980b9" stroke-width="1.5"/>
+    <circle cx="512" cy="70" r="14" fill="#2980b9"/>
+    <text x="512" y="75" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff">4</text>
+    <text x="512" y="104" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2c3e50">Run the</text>
+    <text x="512" y="121" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2c3e50">preflight check</text>
+    <text x="512" y="143" text-anchor="middle" font-size="11.5" font-family="'Courier New',monospace" fill="#1c5cab">peer mst preflight</text>
+    <text x="512" y="159" text-anchor="middle" font-size="12" fill="#6f6f6f">fix any FAIL lines</text>
+  </g>
+  <line x1="577" y1="119" x2="588" y2="119" stroke="#8a8a8a" stroke-width="2" marker-end="url(#arr-st)"/>
+
+  <g>
+    <rect x="592" y="44" width="118" height="150" rx="10" fill="#f6fafd" stroke="#2980b9" stroke-width="1.5"/>
+    <circle cx="651" cy="70" r="14" fill="#0ca30c"/>
+    <path d="M 645 70 l 4.5 5 l 8 -9.5" stroke="#ffffff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="651" y="104" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2c3e50">Confirm</text>
+    <text x="651" y="121" text-anchor="middle" font-size="13.5" font-weight="700" fill="#2c3e50">anchoring</text>
+    <text x="651" y="143" text-anchor="middle" font-size="11.5" font-family="'Courier New',monospace" fill="#1c5cab">peer mst status</text>
+    <text x="651" y="159" text-anchor="middle" font-size="12" fill="#6f6f6f">on a real transaction</text>
+  </g>
+
+  <text x="360" y="230" text-anchor="middle" font-size="12.5" fill="#6f6f6f">Steps 1–2 are per-organization plumbing &#183; Step 3 is a channel update agreed by all organizations</text>
+</svg>

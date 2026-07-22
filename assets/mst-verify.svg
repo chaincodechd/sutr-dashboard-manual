@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" font-family="Lato,'Helvetica Neue',Arial,sans-serif" role="img" aria-label="peer mst verify recomputes the commitment from the Fabric ledger, reads the anchor from the MST chain, compares the two and reports MATCH">
+  <defs>
+    <marker id="arr-vf" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8a8a8a"/>
+    </marker>
+  </defs>
+  <text x="360" y="28" text-anchor="middle" font-size="14" fill="#6f6f6f" font-style="italic">Trust the math, not the record — <tspan font-family="'Courier New',monospace" font-size="13">peer mst verify</tspan> proves it independently</text>
+
+  <!-- Fabric side -->
+  <g>
+    <rect x="30" y="60" width="250" height="106" rx="10" fill="#eaf2f8" stroke="#2980b9" stroke-width="1.5"/>
+    <text x="155" y="88" text-anchor="middle" font-size="14.5" font-weight="700" fill="#2c3e50">Fabric ledger</text>
+    <text x="155" y="110" text-anchor="middle" font-size="12.5" fill="#6f6f6f">recompute the commitment</text>
+    <text x="155" y="127" text-anchor="middle" font-size="12.5" fill="#6f6f6f">from the transaction itself</text>
+    <text x="155" y="150" text-anchor="middle" font-size="12.5" font-family="'Courier New',monospace" fill="#1c5cab">0x3ab0bcd340eae529&#8230;</text>
+  </g>
+
+  <!-- MST side -->
+  <g>
+    <rect x="440" y="60" width="250" height="106" rx="10" fill="#f0eef9" stroke="#4a3aa7" stroke-width="1.5"/>
+    <text x="565" y="88" text-anchor="middle" font-size="14.5" font-weight="700" fill="#2c3e50">MST chain</text>
+    <text x="565" y="110" text-anchor="middle" font-size="12.5" fill="#6f6f6f">read the anchor recorded</text>
+    <text x="565" y="127" text-anchor="middle" font-size="12.5" fill="#6f6f6f">on the MSTAnchor contract</text>
+    <text x="565" y="150" text-anchor="middle" font-size="12.5" font-family="'Courier New',monospace" fill="#4a3aa7">0x3ab0bcd340eae529&#8230;</text>
+  </g>
+
+  <!-- compare -->
+  <line x1="280" y1="113" x2="322" y2="113" stroke="#8a8a8a" stroke-width="2" marker-end="url(#arr-vf)"/>
+  <line x1="440" y1="113" x2="398" y2="113" stroke="#8a8a8a" stroke-width="2" marker-end="url(#arr-vf)"/>
+  <circle cx="360" cy="113" r="27" fill="#ffffff" stroke="#404040" stroke-width="2"/>
+  <text x="360" y="121" text-anchor="middle" font-size="22" font-weight="700" fill="#404040">=</text>
+  <text x="360" y="162" text-anchor="middle" font-size="12" fill="#6f6f6f">compare</text>
+
+  <line x1="360" y1="170" x2="360" y2="196" stroke="#8a8a8a" stroke-width="2" marker-end="url(#arr-vf)"/>
+
+  <!-- MATCH -->
+  <g>
+    <rect x="212" y="202" width="296" height="46" rx="23" fill="#e9f6e9" stroke="#0ca30c" stroke-width="1.5"/>
+    <circle cx="242" cy="225" r="11" fill="#0ca30c"/>
+    <path d="M 237 225 l 3.6 4 l 6.5 -7.6" stroke="#ffffff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="262" y="230" font-size="14.5" font-weight="700" fill="#006300">MATCH — independently proven</text>
+  </g>
+
+  <text x="360" y="286" text-anchor="middle" font-size="12.5" fill="#6f6f6f">Exit code 0 = MATCH &#183; any channel member can reproduce this proof at any time,</text>
+  <text x="360" y="303" text-anchor="middle" font-size="12.5" fill="#6f6f6f">even years later — no need to trust the peer that wrote the status</text>
+</svg>
