@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 390" font-family="Lato,'Helvetica Neue',Arial,sans-serif" role="img" aria-label="A large asset such as an office building is divided into ten thousand digital tokens that many investors can own in any amount, with trades settling in minutes">
+  <defs>
+    <marker id="arrow-tk" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8a8a8a"/>
+    </marker>
+  </defs>
+  <text x="360" y="30" text-anchor="middle" font-size="14" fill="#6f6f6f" font-style="italic">Big, hard-to-trade assets become small, easy-to-own pieces</text>
+
+  <!-- The asset -->
+  <g>
+    <rect x="30" y="70" width="180" height="150" rx="10" fill="#eaf2f8" stroke="#2980b9" stroke-width="1.5"/>
+    <g stroke="#2980b9" stroke-width="2" fill="none" stroke-linejoin="round">
+      <rect x="95" y="92" width="30" height="42"/>
+      <rect x="103" y="80" width="14" height="12"/>
+      <line x1="102" y1="102" x2="108" y2="102"/><line x1="112" y1="102" x2="118" y2="102"/>
+      <line x1="102" y1="112" x2="108" y2="112"/><line x1="112" y1="112" x2="118" y2="112"/>
+      <line x1="102" y1="122" x2="108" y2="122"/><line x1="112" y1="122" x2="118" y2="122"/>
+    </g>
+    <text x="120" y="164" text-anchor="middle" font-size="14.5" font-weight="700" fill="#2c3e50">One large asset</text>
+    <text x="120" y="184" text-anchor="middle" font-size="13" fill="#6f6f6f">an office building,</text>
+    <text x="120" y="202" text-anchor="middle" font-size="13" fill="#6f6f6f">a bond, a carbon credit</text>
+  </g>
+
+  <g>
+    <line x1="210" y1="145" x2="266" y2="145" stroke="#8a8a8a" stroke-width="2" marker-end="url(#arrow-tk)"/>
+    <text x="238" y="130" text-anchor="middle" font-size="12.5" fill="#6f6f6f">divided into</text>
+  </g>
+
+  <!-- The tokens -->
+  <g>
+    <rect x="270" y="70" width="180" height="150" rx="10" fill="#ffffff" stroke="#2980b9" stroke-width="1.5"/>
+    <g fill="#2980b9">
+      <circle cx="302" cy="100" r="7"/><circle cx="326" cy="100" r="7"/><circle cx="350" cy="100" r="7"/><circle cx="374" cy="100" r="7"/><circle cx="398" cy="100" r="7"/><circle cx="422" cy="100" r="7"/>
+      <circle cx="302" cy="124" r="7"/><circle cx="326" cy="124" r="7"/><circle cx="350" cy="124" r="7"/><circle cx="374" cy="124" r="7"/><circle cx="398" cy="124" r="7"/><circle cx="422" cy="124" r="7"/>
+      <circle cx="302" cy="148" r="7"/><circle cx="326" cy="148" r="7"/><circle cx="350" cy="148" r="7"/><circle cx="374" cy="148" r="7"/><circle cx="398" cy="148" r="7"/><circle cx="422" cy="148" r="7"/>
+    </g>
+    <text x="360" y="184" text-anchor="middle" font-size="14.5" font-weight="700" fill="#2c3e50">10,000 digital tokens</text>
+    <text x="360" y="204" text-anchor="middle" font-size="13" fill="#6f6f6f">each one a small share</text>
+  </g>
+
+  <g>
+    <line x1="450" y1="145" x2="506" y2="145" stroke="#8a8a8a" stroke-width="2" marker-end="url(#arrow-tk)"/>
+    <text x="478" y="130" text-anchor="middle" font-size="12.5" fill="#6f6f6f">owned by</text>
+  </g>
+
+  <!-- The investors -->
+  <g>
+    <rect x="510" y="70" width="180" height="150" rx="10" fill="#fdefe9" stroke="#eb6834" stroke-width="1.5"/>
+    <g stroke="#b44a1e" stroke-width="2" fill="none" stroke-linecap="round">
+      <circle cx="576" cy="102" r="7"/>
+      <path d="M 564 124 c 0 -8 5 -12 12 -12 c 7 0 12 4 12 12"/>
+      <circle cx="604" cy="102" r="7"/>
+      <path d="M 592 124 c 0 -8 5 -12 12 -12 c 7 0 12 4 12 12"/>
+      <circle cx="624" cy="102" r="7"/>
+      <path d="M 612 124 c 0 -8 5 -12 12 -12 c 7 0 12 4 12 12"/>
+    </g>
+    <text x="600" y="164" text-anchor="middle" font-size="14.5" font-weight="700" fill="#2c3e50">Many investors</text>
+    <text x="600" y="184" text-anchor="middle" font-size="13" fill="#6f6f6f">each owns as few or as</text>
+    <text x="600" y="202" text-anchor="middle" font-size="13" fill="#6f6f6f">many tokens as they like</text>
+  </g>
+
+  <!-- Ledger note -->
+  <g>
+    <g fill="#1c5cab">
+      <rect x="240" y="262" width="56" height="34" rx="5"/>
+      <rect x="304" y="262" width="56" height="34" rx="5"/>
+      <rect x="368" y="262" width="56" height="34" rx="5"/>
+      <rect x="432" y="262" width="56" height="34" rx="5"/>
+    </g>
+    <g stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.9">
+      <line x1="250" y1="274" x2="286" y2="274"/><line x1="250" y1="281" x2="286" y2="281"/><line x1="250" y1="288" x2="274" y2="288"/>
+      <line x1="314" y1="274" x2="350" y2="274"/><line x1="314" y1="281" x2="350" y2="281"/><line x1="314" y1="288" x2="338" y2="288"/>
+      <line x1="378" y1="274" x2="414" y2="274"/><line x1="378" y1="281" x2="414" y2="281"/><line x1="378" y1="288" x2="402" y2="288"/>
+      <line x1="442" y1="274" x2="478" y2="274"/><line x1="442" y1="281" x2="478" y2="281"/><line x1="442" y1="288" x2="466" y2="288"/>
+    </g>
+    <g stroke="#1c5cab" stroke-width="2" fill="#ffffff">
+      <circle cx="300" cy="279" r="4"/>
+      <circle cx="364" cy="279" r="4"/>
+      <circle cx="428" cy="279" r="4"/>
+    </g>
+    <text x="360" y="318" text-anchor="middle" font-size="13" fill="#6f6f6f">who owns what is recorded on the shared ledger, visible to every member</text>
+  </g>
+
+  <!-- Callout -->
+  <g>
+    <rect x="170" y="340" width="380" height="40" rx="20" fill="#f5f5f5" stroke="#d0d0d0" stroke-width="1.5"/>
+    <text x="360" y="365" text-anchor="middle" font-size="14" fill="#404040">Buying or selling a share settles in <tspan font-weight="700" fill="#006300">minutes, not weeks</tspan></text>
+  </g>
+</svg>

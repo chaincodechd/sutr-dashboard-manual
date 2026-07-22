@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" font-family="Lato,'Helvetica Neue',Arial,sans-serif" role="img" aria-label="Supply chain flow from producer to consumer, with every handoff recorded on a shared ledger; recalls traced in seconds instead of days">
+  <defs>
+    <marker id="arrow-sc" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8a8a8a"/>
+    </marker>
+  </defs>
+  <text x="360" y="30" text-anchor="middle" font-size="14" fill="#6f6f6f" font-style="italic">Every handoff is recorded the moment it happens</text>
+
+  <!-- Stage nodes -->
+  <!-- Producer -->
+  <g>
+    <rect x="12" y="55" width="118" height="86" rx="10" fill="#eaf2f8" stroke="#2980b9" stroke-width="1.5"/>
+    <g stroke="#2980b9" stroke-width="2" fill="none" stroke-linecap="round">
+      <path d="M 71 92 c 0 -12 8 -18 16 -19 c 0 12 -7 18 -16 19"/>
+      <path d="M 71 92 c 0 -9 -6 -14 -13 -15 c 0 9 5 14 13 15"/>
+      <line x1="71" y1="92" x2="71" y2="99"/>
+    </g>
+    <text x="71" y="122" text-anchor="middle" font-size="14" font-weight="700" fill="#2c3e50">Producer</text>
+  </g>
+  <line x1="130" y1="98" x2="152" y2="98" stroke="#8a8a8a" stroke-width="2" marker-end="url(#arrow-sc)"/>
+  <!-- Factory -->
+  <g>
+    <rect x="156" y="55" width="118" height="86" rx="10" fill="#eaf2f8" stroke="#2980b9" stroke-width="1.5"/>
+    <g stroke="#2980b9" stroke-width="2" fill="none" stroke-linejoin="round">
+      <path d="M 200 99 v -14 l 10 7 v -7 l 10 7 v -7 l 10 7 v 7 z"/>
+      <line x1="203" y1="85" x2="203" y2="76" stroke-linecap="round"/>
+    </g>
+    <text x="215" y="122" text-anchor="middle" font-size="14" font-weight="700" fill="#2c3e50">Factory</text>
+  </g>
+  <line x1="274" y1="98" x2="296" y2="98" stroke="#8a8a8a" stroke-width="2" marker-end="url(#arrow-sc)"/>
+  <!-- Distributor -->
+  <g>
+    <rect x="300" y="55" width="118" height="86" rx="10" fill="#eaf2f8" stroke="#2980b9" stroke-width="1.5"/>
+    <g stroke="#2980b9" stroke-width="2" fill="none" stroke-linejoin="round">
+      <rect x="337" y="80" width="22" height="14" rx="1.5"/>
+      <path d="M 359 85 h 8 l 5 5 v 4 h -13 z"/>
+      <circle cx="344" cy="97" r="3"/>
+      <circle cx="366" cy="97" r="3"/>
+    </g>
+    <text x="359" y="122" text-anchor="middle" font-size="14" font-weight="700" fill="#2c3e50">Distributor</text>
+  </g>
+  <line x1="418" y1="98" x2="440" y2="98" stroke="#8a8a8a" stroke-width="2" marker-end="url(#arrow-sc)"/>
+  <!-- Retailer -->
+  <g>
+    <rect x="444" y="55" width="118" height="86" rx="10" fill="#eaf2f8" stroke="#2980b9" stroke-width="1.5"/>
+    <g stroke="#2980b9" stroke-width="2" fill="none" stroke-linejoin="round">
+      <path d="M 489 84 h 28 l 3 7 h -34 z"/>
+      <path d="M 490 91 v 9 h 26 v -9" stroke-linecap="round"/>
+      <line x1="499" y1="100" x2="499" y2="94" stroke-linecap="round"/>
+    </g>
+    <text x="503" y="122" text-anchor="middle" font-size="14" font-weight="700" fill="#2c3e50">Retailer</text>
+  </g>
+  <line x1="562" y1="98" x2="584" y2="98" stroke="#8a8a8a" stroke-width="2" marker-end="url(#arrow-sc)"/>
+  <!-- Consumer -->
+  <g>
+    <rect x="588" y="55" width="118" height="86" rx="10" fill="#eaf2f8" stroke="#2980b9" stroke-width="1.5"/>
+    <g stroke="#2980b9" stroke-width="2" fill="none" stroke-linecap="round">
+      <circle cx="647" cy="82" r="6"/>
+      <path d="M 637 100 c 0 -7 4 -11 10 -11 c 6 0 10 4 10 11"/>
+    </g>
+    <text x="647" y="122" text-anchor="middle" font-size="14" font-weight="700" fill="#2c3e50">Consumer</text>
+  </g>
+
+  <!-- Dotted record lines down to the ledger -->
+  <g stroke="#2980b9" stroke-width="1.5" stroke-dasharray="3 4">
+    <line x1="71" y1="141" x2="146" y2="228"/>
+    <line x1="215" y1="141" x2="255" y2="228"/>
+    <line x1="359" y1="141" x2="359" y2="228"/>
+    <line x1="503" y1="141" x2="463" y2="228"/>
+    <line x1="647" y1="141" x2="572" y2="228"/>
+  </g>
+  <text x="360" y="170" text-anchor="middle" font-size="13" fill="#2980b9" stroke="#ffffff" stroke-width="7" paint-order="stroke" stroke-linejoin="round">each step adds a record</text>
+
+  <!-- Shared ledger band -->
+  <g>
+    <g fill="#1c5cab">
+      <rect x="120" y="230" width="72" height="44" rx="6"/>
+      <rect x="202" y="230" width="72" height="44" rx="6"/>
+      <rect x="284" y="230" width="72" height="44" rx="6"/>
+      <rect x="366" y="230" width="72" height="44" rx="6"/>
+      <rect x="448" y="230" width="72" height="44" rx="6"/>
+      <rect x="530" y="230" width="72" height="44" rx="6"/>
+    </g>
+    <g stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.9">
+      <line x1="134" y1="245" x2="178" y2="245"/><line x1="134" y1="252" x2="178" y2="252"/><line x1="134" y1="259" x2="164" y2="259"/>
+      <line x1="216" y1="245" x2="260" y2="245"/><line x1="216" y1="252" x2="260" y2="252"/><line x1="216" y1="259" x2="246" y2="259"/>
+      <line x1="298" y1="245" x2="342" y2="245"/><line x1="298" y1="252" x2="342" y2="252"/><line x1="298" y1="259" x2="328" y2="259"/>
+      <line x1="380" y1="245" x2="424" y2="245"/><line x1="380" y1="252" x2="424" y2="252"/><line x1="380" y1="259" x2="410" y2="259"/>
+      <line x1="462" y1="245" x2="506" y2="245"/><line x1="462" y1="252" x2="506" y2="252"/><line x1="462" y1="259" x2="492" y2="259"/>
+      <line x1="544" y1="245" x2="588" y2="245"/><line x1="544" y1="252" x2="588" y2="252"/><line x1="544" y1="259" x2="574" y2="259"/>
+    </g>
+    <g stroke="#1c5cab" stroke-width="2" fill="#ffffff">
+      <circle cx="197" cy="252" r="4"/>
+      <circle cx="279" cy="252" r="4"/>
+      <circle cx="361" cy="252" r="4"/>
+      <circle cx="443" cy="252" r="4"/>
+      <circle cx="525" cy="252" r="4"/>
+    </g>
+    <text x="360" y="298" text-anchor="middle" font-size="13.5" fill="#404040" font-weight="700">Shared ledger</text>
+    <text x="360" y="316" text-anchor="middle" font-size="13" fill="#6f6f6f">every member keeps an identical, linked copy of the history</text>
+  </g>
+
+  <!-- Recall callout -->
+  <g>
+    <rect x="170" y="340" width="380" height="42" rx="21" fill="#f5f5f5" stroke="#d0d0d0" stroke-width="1.5"/>
+    <text x="360" y="366" text-anchor="middle" font-size="14" fill="#404040">Tracing a product recall: <tspan fill="#9a9a9a" text-decoration="line-through">days of phone calls</tspan>  <tspan font-weight="700" fill="#006300">seconds of lookup</tspan></text>
+  </g>
+</svg>
